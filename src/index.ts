@@ -1,29 +1,26 @@
+import "dotenv/config";
 
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
+import { jwtSecretKey } from "../environment";
+
+console.log(jwtSecretKey);
 
 const payload: jwt.JwtPayload = {
-  iss: 'https://example.com',
-  sub: 'Vinaykv123'
+  iss: "https://purpleshorts.co.in",
+  sub: "kabir-asani",
 };
 
-const secretKey = "HelloWorld@1234";
-
-const token = jwt.sign(payload, secretKey, {
-  algorithm: 'HS256'
+const token = jwt.sign(payload, jwtSecretKey, {
+  algorithm: "HS256",
 });
 
-console.log(token);
+console.log("Token", token);
 
+try {
+  const decodedPayload = jwt.verify(token, jwtSecretKey);
 
-
-
-
-
-
-
-
-
-
-
-
-
+  console.log("Decoded Payload", decodedPayload);
+} catch (e) {
+  console.log("Error", e);
+  ("");
+}
