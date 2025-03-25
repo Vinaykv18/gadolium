@@ -9,3 +9,8 @@ export type SignUpWithUsernameAndPasswordResult = {
     token: string;
     user: User;
 };
+
+export type LoginWithUsernameAndPasswordResult = {
+    token: string;
+    user: User;
+};
